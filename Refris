@@ -1,0 +1,50 @@
+<?php
+if(isset($_POST['mostrar'])){
+
+    require_once 'Refri.php';
+
+    $refri = new Refri();
+    $refri->setNome( $_POST['nome']);
+    $refri->setPreco($_POST['prec']);
+    $refri->setRetorna($_POST['retorna']);
+    echo $refri->mostrarRefri();
+
+}
+
+if(isset($_POST['enviar'])){
+
+    require_once 'Refri.php';
+
+    $refri = new Refri();
+    $refri->setNome( $_POST['nome']);
+    $refri->setPreco($_POST['preco']);
+    $refri->setretorna($_POST['retorna']);
+    $rest;
+    $rest = $refri->verificarPreco();
+
+    if ($rest>5) {
+        echo "O Refrigerante esta em oferta";
+    } else {
+        echo "O Refrigerante possui um preço normal ";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form action="#" method="post">
+    Nome: <input type="text" name="nome" id="NomeID"></br>
+    Preço: <input type="text" name="preco" id="PrecoID"></br>
+    Retorna: <input type="text" name="retorna" id="RetornaID"></br>
+    <input type="submit" value="mostrar" name="mostrar"></br>
+    </br>
+    <input type="submit" value="enviar" name="enviar"></br>
+    </form>
+</body>
+</html>
