@@ -1,0 +1,28 @@
+<?php
+ class Refri{
+   require_once 'Bebidas.php';
+   private $retorna;
+
+     public function setRetorna($retorna){
+        $this->retorna = $retorna;   
+     }
+
+     public function getRetorna(){
+        return $this->retorna;   
+     }
+
+     public function mostrarBebida(){
+      return $this->nome .', '. $this->retorna .', '. $this->prec .', ';
+     }
+
+     public function verificarPreco(){
+         if($this->prec < 5){
+            return true;
+         }else if($this->prec > 5){
+         return false;
+         }
+      }
+
+}
+
+?>
