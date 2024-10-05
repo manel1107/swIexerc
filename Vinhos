@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form action="#" method="post">
+    Nome: <input type="text" name="nome" id="NomeID"></br>
+    Preço: <input type="text" name="preco" id="PrecoID"></br>
+    Tipo: <input type="text" name="tipo" id="TipoID"></br>
+    Safra: <input type="text" name="safra" id="SafraID"></br>
+    <input type="submit" value="mostrar" name="mostrar"></br>
+    </br>
+    <input type="submit" value="enviar" name="enviar"></br>
+    </form>
+<?php
+if(isset($_POST['mostrar'])){
+
+    require_once 'Vinho.php';
+
+    $vinho = new vinho();
+    $vinho->setNome( $_POST['nome']);
+    $vinho->setPreco($_POST['prec']);
+    $vinho->setTipo($_POST['tipo']);
+    $vinho->setSafra($_POST['saf']);
+    echo $vinho->mostrarvinho();
+
+}
+
+if(isset($_POST['enviar'])){
+
+    require_once 'Vinho.php';
+
+    $vinho = new vinho();
+    $vinho->setNome( $_POST['nome']);
+    $vinho->setPreco($_POST['preco']);
+    $vinho->setTipo($_POST['tipo']);
+    $vinho->setSafra($_POST['safra']);
+    $rest;
+    $rest = $vinho->verificarPreco();
+
+    if ($rest>25) {
+        echo "O vinho esta em oferta";
+    } else {
+        echo "O vinho possui um preço normal ";
+    }
+}
+?>
+</body>
+</html>
