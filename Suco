@@ -1,0 +1,28 @@
+<?php
+Class Suco{
+   require_once 'Bebidas.php';
+   private $sabor;
+
+     public function setSabor($sabor){
+        $this->sab = $sabor;   
+     }
+
+     public function getSabor(){
+        return $this->sab;   
+     }
+
+     public function mostrarBebida(){
+      return $this->nome .', '. $this->tipo .', '. $this->prec .', '. $this->sab;
+     }
+
+     public function verificarPreco(){
+         if($this->prec < 2.5){
+            return true;
+         }else if($this->prec > 2.5){
+         return false;
+         }
+      }
+
+}
+
+?>
