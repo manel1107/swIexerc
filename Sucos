@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form action="#" method="post">
+    Nome: <input type="text" name="nome" id="NomeID"></br>
+    Preço: <input type="text" name="preco" id="PrecoID"></br>
+    Sabor: <input type="text" name="sabor" id="SaborID"></br>
+    <input type="submit" value="mostrar" name="mostrar"></br>
+    </br>
+    <input type="submit" value="enviar" name="enviar"></br>
+    </form>
+<?php
+if(isset($_POST['mostrar'])){
+
+    require_once 'Suco.php';
+
+    $suco = new Suco();
+    $suco->setNome( $_POST['nome']);
+    $suco->setPreco($_POST['prec']);
+    $suco->setSabor($_POST['sab']);
+    echo $suco->mostrarSuco();
+
+}
+
+if(isset($_POST['enviar'])){
+
+    require_once 'Suco.php';
+
+    $suco = new Suco();
+    $suco->setNome( $_POST['nome']);
+    $suco->setPreco($_POST['preco']);
+    $suco->setSabor($_POST['sab']);
+    $rest;
+    $rest = $suco->verificarPreco();
+
+    if ($rest>2.5) {
+        echo "O Suco esta em oferta";
+    } else {
+        echo "O Suco possui um preço normal ";
+    }
+}
+?>
+</body>
+</html>
